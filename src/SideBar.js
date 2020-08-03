@@ -1,73 +1,110 @@
 import React, {Component} from 'react';
 import './SideBar.css';
-import avatar from './images/11066361.jpeg'; 
+//import avatar from './images/11066361.jpeg'; 
 import Alert from 'react-bootstrap/Alert';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import * as Constants from './Constants';
 
+//const API="https://api.github.com/users";
 class SideBar extends Component{
+    
     constructor(props){
         super(props);
-        this.state={};
+        this.state={
+            bio:"",
+           // username: 'satokora',
+      name:'',
+      avatar:'',
+      location:'',
+      repos:'',
+      followers: '',
+      following:'',
+      homeUrl:'',
+      notFound:''
+        };
     }
+    fetchProfile() { 
+        let url = `${Constants.API}/${Constants.USER_NAME}`;
+        fetch(url)
+          .then((res) => res.json() )
+          .then((data) => {
+            this.setState({
+              username: data.login,
+              name: data.name,
+              avatar: data.avatar_url,
+              location: data.location,
+              repos: data.public_repos,
+              followers: data.followers,
+              following: data.following,
+              homeUrl: data.html_url,
+              notFound: data.message,
+              bio:data.bio
+            })
+          })
+          .catch((error) => console.log(JSON.stringify(error)) )
+      }
+    async componentDidMount() {
+        this.fetchProfile();
+        
+      }
 
     render(){
+        //let data = this.bio;
         return(
-            <div class="off-canvas off-canvas-sidebar-show">
+            <div>
             {/* <!-- off-screen toggle button --> */}
-            <a class="off-canvas-toggle btn btn-primary btn-action" href="#sidebar-id">
-                <i class="icon icon-menu"></i>
+            <a className="off-canvas-toggle btn btn-primary btn-action" href="#sidebar-id">
+                <i className="icon icon-menu"></i>
             </a>
 
-            <div id="sidebar-id" class="off-canvas-sidebar">
+            <div id="sidebar-id" className="off-canvas-sidebar">
                 <div>
                 <hr/>
-                    <div class="profile-photo">
-                        <img class="s-circle" width="30%" alt="avatar" src={avatar} />
-                        <h5>Satoko Kora<br/><span lass="lang-ja"><ruby>高<rt>こう</rt>良<rt>ら</rt>智<rt>さと</rt>子<rt>こ</rt></ruby></span></h5>
+                    <div className="profile-photo">
+                        <img className="s-circle" width="30%" alt="avatar" src={this.state.avatar} />
+                        <h5>{this.state.name}<br/><span lass="lang-ja"><ruby>高<rt>こう</rt>良<rt>ら</rt>智<rt>さと</rt>子<rt>こ</rt></ruby></span></h5>
+                        <a target="_blank" href="https://linkedin.com/in/satoko-kora-223aa380"><FontAwesomeIcon icon={faLinkedin}  size="lg" /></a>&nbsp;
+                        <a href="mailto:satokorambxl@gmail.com"><FontAwesomeIcon icon={faEnvelope}  size="lg" /></a>
                     </div>
                     <hr/>
 
                 </div>
-                <div class="tile">
-                    <div class="tile-content">
+                <div className="tile">
+                    <div className="tile-content">
                     <Alert variant="info">
-                    Full-stack developer, Master's degree in IT in Illinois State University. Currently living in South LA, originally from Japan. Love being creative :)
-  </Alert>
+                    {this.state.bio}
+                    </Alert>
                         <p></p>
-
+                        
                     </div>
 
                 </div>
+                <div>
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a href="#">Projects</a>
-                    </li>
                     <li class="nav-item active">
-                        <a href="#">Layout</a>
+                        <a href="#">My Github Repositories</a>
                         <ul class="nav">
                             <li class="nav-item">
-                                <a href="#">Flexbox grid</a>
+                                <a href="#">By Language</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Responsive</a>
+                                <a href="#">By Topic</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Navbar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">Empty states</a>
+                                <a href="#">By Timeline</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#">Components</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Utilities</a>
-                    </li>
                 </ul>
+                    
+                </div>
+
+                    
             </div>
 
-            <a class="off-canvas-overlay" href="#close"></a>
+            <a className="off-canvas-overlay" href="#close"></a>
 
             </div>
         );
