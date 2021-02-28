@@ -25,9 +25,19 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Satoko Kora</title>
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css"> -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -42,5 +52,20 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var options=null;
+            var instances = M.Sidenav.init(elems, options);
+            //instances.open();
+            var elems2 = document.querySelectorAll('.collapsible');
+            var instances2 = M.Collapsible.init(elems2, options);
+
+            var elems3 = document.querySelectorAll('.tooltipped');
+            var instances3 = M.Tooltip.init(elems3, options);
+           // instances2.open();
+          });
+    </script>
   </body>
 </html>

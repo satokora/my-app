@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
 import * as Constants from './Constants';
 
-const API="https://api.github.com/users";
+//const API="https://api.github.com/users";
 class Language extends Component{
     constructor(props){
         super(props);
         this.state={
             repos:[],
-            langs:[]
+            langs:[],
+            tags:[],
+            repoArray:[],
+            tagArray:[]
         };
+    }
+    
+
+    checkTag(lang, compare) {
+    return lang == compare;
     }
     fetchLangRepos() { 
         let url = `${Constants.API}/${Constants.USER_NAME}/repos`;
@@ -29,23 +37,34 @@ class Language extends Component{
             });
             var lngArray=[];
             var uniqueItems = [];
+            var repoArray=[];
+            //var tagArray=[];
             for (var i=0; i < data.length; i++) {
+                repoArray.push(data[i].id);
                 fetch(data[i].languages_url)
                 .then((res) => res.json() )
                 .then((langs) => {
-                   
+                   var lgs=[];
                     for (var key in langs) {
+                        
                         // check if the property/key is defined in the object itself, not in parent
                         if (langs.hasOwnProperty(key)) {  
                             lngArray.push(key);
+                            lgs.push(key);
                             uniqueItems = Array.from(new Set(lngArray));
-                            
                         }
                     }
+
                     this.setState({ 
-                        // langs: this.state.langs.concat(key)
+                        
                         langs:uniqueItems
                        });
+
+                    //    this.setState(prevState => {
+                    //     let repoLangs = Object.assign({}, prevState.jasper);  // creating copy of state variable jasper
+                    //     jasper.name = 'someothername';                     // update the name property, assign a new value                 
+                    //     return { jasper };                                 // return new object jasper object
+                    //   })
                     
                 })
             .catch((error) => console.log(JSON.stringify(error)));
@@ -64,32 +83,49 @@ class Language extends Component{
                 {this.state.langs.map((lang,index) => (
                     <input type="radio" id={"tag-"+(index+1)} className="filter-tag" name="filter-radio" key={index} hidden />
                 ))}
-            </div>
-            <div className="filter-nav">
-                <label className="chip" htmlFor="tag-0">All</label>
-                {this.state.langs.map((lang,index) => (
-                    <label className="chip" htmlFor={"tag-"+(index+1)} key={index}>{lang}</label>
-                ))}
-            </div>
-
-            <div className="filter-body">
-                <div className="filter-body">
-                    <div className="columns">
-                    {this.state.repos.map((item,index) => (
-                        <div className="column col-6 filter-item" data-tag={"tag-"+(index+1)} key={index}>
-                            <div className="card">
-                                <div className="card-header">
-                                <div className="card-title text-bold"><a href={item.html_url}>{item.name}</a></div>
-                                <div className="card-subtitle text-gray">{item.description}</div>
-                                </div>
-                            </div>
-                        </div>
+            
+                <div className="filter-nav">
                     
+                    {this.state.langs.map((lang,index) => (
+                        /* <div className="chip" htmlFor={"tag-"+(index+1)} key={index}>{lang}</div> */
+                        <div className="chip" tabindex={(index+1)} >{lang}</div>
                     ))}
+                </div>
+
+                <div className="filter-body">
+                    <div className="filter-body">
+                    <div class="row">
+    
+  
+                        <div className="columns">
+                        {this.state.repos.map((item,index) => (
+                            <div class="col s12 m6">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                <a href={item.html_url}><span class="card-title orange-text text-lighten-2">{item.name}</span></a>
+                                <p>{item.description}</p>
+                                </div>
+                                {/* <div class="card-action">
+                                <a href="#">This is a link</a>
+                                <a href="#">This is a link</a>
+                                </div> */}
+                            </div>
+                            </div>
+                            /* <div className="column col-6 filter-item" data-tag={"tag-"+(this.state.tags[index]+1)} key={index}>
+                                <div className="card">
+                                    <div className="card-header">
+                                    <div className="card-title text-bold"><a href={item.html_url}>{item.name}</a></div>
+                                    <div className="card-subtitle text-gray">{item.description}</div>
+                                    </div>
+                                </div>
+                            </div> */
+                        
+                        ))}
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
           </div>
         );
       }

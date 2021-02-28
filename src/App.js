@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import SideBar from "./SideBar";
 import Content from "./Content";
-import Iframe from "./Iframe";
-import { render } from '@testing-library/react';
 
 //const API="https://api.github.com/users";
 class App extends Component {
@@ -42,11 +39,11 @@ class App extends Component {
 render(){
   return (
     <div className="App">
-    <div class="off-canvas off-canvas-sidebar-show">
+    <div className="off-canvas off-canvas-sidebar-show">
       <SideBar></SideBar>
-      <div class="off-canvas-content">
-        <div class="docs-content">
-          <div class="container">
+      <div className="off-canvas-content">
+        <div className="docs-content">
+          <div className="container">
             <Content></Content>
           </div>
         </div>

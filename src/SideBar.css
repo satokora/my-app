@@ -8,21 +8,32 @@
     color: #66758c;
 }
 
-.profile-photo img{
-    margin: 5px;
+.sidenav .user-view .circle {
+    height: 150px;
+    width: 150px;
 }
 
-.off-canvas .off-canvas-sidebar {
+.sidenav img{
+    margin-left: 30px;
+    text-align: center;
+}
+
+.sidenav {
     width: 18rem;
     /* opacity: 0.8; */
     background-color: #1e3d59;
+    /* color: #fff; */
+}
+.sidenav li>a {
     color: #fff;
 }
 /* .off-canvas {
     width: 18rem;
 } */
-.tile .tile-content{
-    padding:10px;
+.tile{
+    line-height:20px;
+    color: #fff;
+    padding: 5px;
 }
 /* #sidebar-id{
     width: 18rem;
@@ -47,4 +58,10 @@ hr{
 
 .nav{
     padding: 10px;
+}
+.card {
+    background-color: #1e3d59;
+}
+.card-content{
+    line-height: 1.5;
 }
