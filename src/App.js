@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SideBar from "./SideBar";
 import Content from "./Content";
+import FeatureDiscovery from "./FeatureDiscovery";
 
 //const API="https://api.github.com/users";
 class App extends Component {
@@ -44,12 +45,22 @@ render(){
       <div className="off-canvas-content">
         <div className="docs-content">
           <div className="container">
-            <Content></Content>
+          
+            <Content>
+              
+            </Content>
+            <FeatureDiscovery></FeatureDiscovery>
           </div>
+
+          </div>
+          
         </div>
+
       </div>
+      
       </div>
-    </div>
+      
+    
   );
 }
 }

@@ -53,6 +53,8 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+   
+     
     <script>
       document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
@@ -64,6 +66,13 @@
 
             var elems3 = document.querySelectorAll('.tooltipped');
             var instances3 = M.Tooltip.init(elems3, options);
+
+            // var elems4 = document.querySelectorAll('.tap-target');
+            // var instances4 = M.TapTarget.init(elems4, options);
+            // instances4.next();
+            
+            var elems5 = document.querySelectorAll('.fixed-action-btn');
+    var instances5 = M.FloatingActionButton.init(elems5, options);
            // instances2.open();
           });
     </script>
