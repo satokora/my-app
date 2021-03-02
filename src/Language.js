@@ -18,6 +18,9 @@ class Language extends Component{
     checkTag(lang, compare) {
     return lang == compare;
     }
+     findLang(index) {
+        return this.state.langArray?this.state.langArray[index]:null;
+      }
     fetchLangRepos() { 
         let url = `${Constants.API}/${Constants.USER_NAME}/repos`;
         fetch(url)
@@ -38,6 +41,8 @@ class Language extends Component{
             var lngArray=[];
             var uniqueItems = [];
             var repoArray=[];
+            var commaLangs="";
+            var commaLangArray=[];
             //var tagArray=[];
             for (var i=0; i < data.length; i++) {
                 repoArray.push(data[i].id);
@@ -50,13 +55,19 @@ class Language extends Component{
                         // check if the property/key is defined in the object itself, not in parent
                         if (langs.hasOwnProperty(key)) {  
                             lngArray.push(key);
-                            lgs.push(key);
+                            commaLangs+="," + key;
+                           
+                            //lgs.push(key);
                             uniqueItems = Array.from(new Set(lngArray));
                         }
                     }
-
+                    console.log(commaLangs);
+                    commaLangArray.push(commaLangs);
+                    commaLangs="";
+                    
+                    
                     this.setState({ 
-                        
+                        langArray:commaLangArray,
                         langs:uniqueItems
                        });
 
@@ -100,7 +111,7 @@ class Language extends Component{
                         <div className="columns">
                         {this.state.repos.map((item,index) => (
                             <div class="col s12 m6">
-                            <div class="card blue-grey darken-1">
+                            <div class="card blue-grey darken-1" data-language={this.findLang(index)}>
                                 <div class="card-content white-text">
                                 <a href={item.html_url}><span class="card-title orange-text text-lighten-2">{item.name}</span></a>
                                 <p>{item.description}</p>
