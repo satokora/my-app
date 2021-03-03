@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import * as Constants from './Constants';
 
 
-class Language extends Component{
+class Topic extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -15,7 +15,7 @@ class Language extends Component{
     filterByLanguage(lang)
     {
         console.log(lang);
-        var cards = document.getElementsByClassName('repo-card');
+        var cards = document.getElementsByClassName('card');
 
         var i;
         for (i = 0; i < cards.length; i++) {
@@ -102,7 +102,7 @@ class Language extends Component{
     render() {
         return (
           <div id="content">
-            <div className="filter">
+            {/* <div className="filter">
                 <input type="radio" id="tag-0" className="filter-tag" name="filter-radio" hidden defaultChecked />
                 {this.state.langs.map((lang,index) => (
                     <input type="radio" id={"tag-"+(index+1)} className="filter-tag" name="filter-radio" key={index} hidden />
@@ -111,7 +111,7 @@ class Language extends Component{
                 <div className="filter-nav">
                     
                     {this.state.langs.map((lang,index) => (
-                        /* <div className="chip" htmlFor={"tag-"+(index+1)} key={index}>{lang}</div> */
+                        /* <div className="chip" htmlFor={"tag-"+(index+1)} key={index}>{lang}</div> 
                         <div className="chip" tabindex={(index+1)}  onClick={() => { this.filterByLanguage(lang)} } >{lang}</div>
                     ))}
                 </div>
@@ -122,7 +122,7 @@ class Language extends Component{
                         <div className="columns">
                         {this.state.repos.map((item,index) => (
                             <div class="col s12 m6">
-                                <div class="card repo-card blue-grey darken-1" data-language={this.findLang(index)}>
+                                <div class="card blue-grey darken-1" data-language={this.findLang(index)}>
                                     <div class="card-content white-text">
                                         <a href={item.html_url}><span class="card-title orange-text text-lighten-2">{item.name}</span></a>
                                         <p>{item.description}</p>
@@ -134,10 +134,10 @@ class Language extends Component{
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
           </div>
         );
       }
 }
 
-export default Language;
+export default Topic;

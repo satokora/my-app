@@ -3,6 +3,8 @@ import './App.css';
 import SideBar from "./SideBar";
 import Content from "./Content";
 import FeatureDiscovery from "./FeatureDiscovery";
+import { BrowserRouter as Router } from 'react-router-dom';
+import {Routes} from './Routes';
 
 //const API="https://api.github.com/users";
 class App extends Component {
@@ -40,15 +42,18 @@ class App extends Component {
 render(){
   return (
     <div className="App">
+    <Router>
+    
     <div className="off-canvas off-canvas-sidebar-show">
       <SideBar></SideBar>
       <div className="off-canvas-content">
         <div className="docs-content">
           <div className="container">
+          {/* <Router>
+    <Routes />
+  </Router> */}
+          <Content></Content>
           
-            <Content>
-              
-            </Content>
             <FeatureDiscovery></FeatureDiscovery>
           </div>
 
@@ -57,7 +62,7 @@ render(){
         </div>
 
       </div>
-      
+      </Router>
       </div>
       
     

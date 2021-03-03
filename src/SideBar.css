@@ -65,3 +65,25 @@ hr{
 .card-content{
     line-height: 1.5;
 }
+
+.collection {
+    /* margin: .5rem 0 1rem 0; */
+    border: 0;
+    /* border-radius: 2px;
+    overflow: hidden;
+    position: relative; */
+}
+
+
+
+.collection.with-header .collection-header {
+    background-color: #1e3d59;
+    border-bottom: 0;
+}
+.collection .collection-item {
+    background-color: #1e3d59;
+    /* line-height: 1.5rem;
+    padding: 10px 20px; */
+    margin: 0;
+    border-bottom: 0;
+}

@@ -5,22 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  background-image: url("images/marble-surface-2341290.jpg");
+  /* Full height */
+  /* height: 100%; */
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.App {
-  /* The image used */
+/* .App {
   background-image: url("images/marble-surface-2341290.jpg");
-  /* Full height */
   height: 100%;
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 
 body,
 html {
