@@ -15,21 +15,13 @@ class Content extends Component{
     render(){
         return(
             <div>
-            {/* <Router> */}
-            <Switch>
-                {/* <Route exactly component={Language} pattern="/" />
-                <Route exactly component={Language} pattern="/language" />
-                <Route exactly component={Topic} pattern="/topic" /> */}
-                <Route exact path="/Language" component={Language} />
-        <Route exact path="/">
-          <Redirect to="/Language" />
-        </Route>
-        <Route exact path="/Topic" component={Topic} />
-                {/* <Route exactly component={Page3} pattern="/path3" />
-                <Route component={Page404} /> */}
+              <Switch>
+                  <Route exact path="/Language" component={Language} />
+                  <Route exact path="/">
+                    <Redirect to="/Language" />
+                  </Route>
+                  <Route exact path="/Topic" component={Topic} />
               </Switch>
-            {/* <Language></Language> */}
-            {/* </Router> */}
             </div>
         );
     }

@@ -8,10 +8,7 @@ body {
 
 
   background-image: url("images/marble-surface-2341290.jpg");
-  /* Full height */
-  /* height: 100%; */
   background-position: center;
-  /* background-repeat: no-repeat; */
   background-size: cover;
 }
 
@@ -19,13 +16,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* .App {
-  background-image: url("images/marble-surface-2341290.jpg");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
 
 body,
 html {
@@ -33,18 +23,3 @@ html {
     margin: 0;
 }
 
-
-/* 
-.profile-photo {
-    background-color: #e7cebf;
-    opacity: 1;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #66758c;
-}
-
-.off-canvas .off-canvas-sidebar {
-    width: 18rem;
-    opacity: 0.8;
-} */

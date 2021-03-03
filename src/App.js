@@ -17,23 +17,6 @@ class App extends Component {
   };
   }
   fetchLinkedinProfile(username) { 
-    // // Import the module in your file
-    // var ScrapeLinkedin = require("scrape-linkedin");
-    
-    // // Create the scraper object
-    // var scrapper = new ScrapeLinkedin(
-    //   {
-    //     debug: true
-    //   }
-    // );
-    
-    // // Fetch a profile
-    // scrapper.fetch(username)
-    // .then((res) => res.json() )
-    // // Handle the result
-    // .then(profile => console.log(profile))
-    // // Handle an error
-    // .catch(err => console.log(err));
   }
   async componentDidMount() {
     this.fetchLinkedinProfile(this.state.username);
