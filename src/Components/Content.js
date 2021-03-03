@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Content.css';
-import Language from './Language';
-import Topic from './Topic';
+import Language from '../Pages/Language';
+import Topic from '../Pages/Topic';
 import { Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
 
 class Content extends Component{

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Link , BrowserRouter as Router } from 'react-router-dom';
-import * as Constants from './Constants';
+import * as Constants from '../Util/Constants';
 
 //const API="https://api.github.com/users";
 class SideBar extends Component{

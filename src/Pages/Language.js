@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import * as Constants from './Constants';
+import * as Constants from '../Util/Constants';
 
 
 class Language extends Component{
@@ -95,10 +95,10 @@ class Language extends Component{
         }
       }).catch((error) => console.log(JSON.stringify(error)) )
       }
-    async componentDidMount() {
-        this.fetchLangRepos();
-        
-      }
+        async componentDidMount() {
+            this.fetchLangRepos();
+            
+        }
     render() {
         return (
           <div id="content">
