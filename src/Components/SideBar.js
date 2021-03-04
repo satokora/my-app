@@ -86,8 +86,7 @@ class SideBar extends Component{
                         </div>
                     </div>
                 </li>
-                {/* <li><div className="divider"></div>
-                </li> */}
+               
                 <ul class="collection with-header">
                 <li  class="collection-header">
                 <a  className="subheader white-text" href="#!">

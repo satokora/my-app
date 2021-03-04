@@ -111,7 +111,6 @@ class Language extends Component{
                 <div className="filter-nav">
                     
                     {this.state.langs.map((lang,index) => (
-                        /* <div className="chip" htmlFor={"tag-"+(index+1)} key={index}>{lang}</div> */
                         <div className="chip" tabindex={(index+1)}  onClick={() => { this.filterByLanguage(lang)} } >{lang}</div>
                     ))}
                 </div>

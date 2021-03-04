@@ -7,23 +7,22 @@ class Topic extends Component{
         super(props);
         this.state={
             repos:[],
-            langs:[],
-            tags:[],
-            tagArray:[]
+            topics:[],
+            filters:[],
         };
     }
-    filterByLanguage(lang)
+    filterByTopic(topic)
     {
-        console.log(lang);
+        
         var cards = document.getElementsByClassName('card');
 
         var i;
         for (i = 0; i < cards.length; i++) {
             
-            if (cards[i].dataset.language && cards[i].dataset.language.includes("," + lang))
+            if (cards[i].dataset.topic && cards[i].dataset.topic.includes("," + topic))
             {
                 cards[i].style.display = 'block';
-                console.log(cards[i].dataset.language);
+                console.log(cards[i].dataset.topic);
             }
             else
             {
@@ -33,14 +32,13 @@ class Topic extends Component{
 
     }
 
-    checkTag(lang, compare) {
-    return lang == compare;
+    findTopic(index) {
+    return this.state.topics?this.state.topics[index]:null;
     }
-    findLang(index) {
-    return this.state.langArray?this.state.langArray[index]:null;
-    }
-    fetchLangRepos() { 
+    fetchTopicRepos()
+    {
         let url = `${Constants.API}/${Constants.USER_NAME}/repos`;
+
         fetch(url)
           .then((res) => res.json() )
           .then((data) => {
@@ -57,64 +55,86 @@ class Topic extends Component{
               bio:data.bio
             });
 
-            var lngArray=[];
-            var uniqueItems = [];
-            var commaLangs="";
-            var commaLangArray=[];
+            var commaTopics="";
+            var commaTopicArray=[];
+            var topicsArray=[];
+            var uniqueTopics= [];
             
             for (var i=0; i < data.length; i++) {
-               
-                fetch(data[i].languages_url)
-                .then((res) => res.json() )
-                .then((langs) => {
-                   var lgs=[];
-                    for (var key in langs) {
-                        
-                        
-                        if (langs.hasOwnProperty(key)) {  
-                            lngArray.push(key);
-                            commaLangs+="," + key;
-                           
-                           
-                            uniqueItems = Array.from(new Set(lngArray));
+                var query = `{
+                    repository(owner: "${Constants.USER_NAME}", name: "${data[i].name}") {
+                    repositoryTopics(first: 10) {
+                        edges {
+                        node {
+                            topic {
+                            name
+                            }
+                        }
                         }
                     }
-                    
-                    commaLangArray.push(commaLangs);
-                    commaLangs="";
-                    
-                    
-                    this.setState({ 
-                        langArray:commaLangArray,
-                        langs:uniqueItems
-                       });
-
-                    
+                    }
+                }`;
+           
+            fetch(Constants.GITHUB_GRAPHQL_API, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': Constants.AUTHORIZATION_KEY,
+                'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                query
                 })
-            .catch((error) => console.log(JSON.stringify(error)));
+            })
+            .then(r => r.json())
+            .then(data =>{
+
+                var nodes = data.data.repository.repositoryTopics.edges;
+
+                if(nodes.length>0)
+                {
+                    for (var i=0; i < nodes.length; i++) {
+                        topicsArray.push(nodes[i].node.topic.name);
+                         console.log(nodes[i].node.topic.name);
+                         commaTopics+="," + nodes[i].node.topic.name;
+                    }
+                   
+                }
+
+                commaTopicArray.push(commaTopics);
+                commaTopics="";
+
+                uniqueTopics = Array.from(new Set(topicsArray));
+
+                this.setState({ 
+                    topics:commaTopicArray,
+                    filters:uniqueTopics
+                });
+            } );
         }
       }).catch((error) => console.log(JSON.stringify(error)) )
-      }
+        
+    }
     async componentDidMount() {
-        this.fetchLangRepos();
+        this.fetchTopicRepos();
         
       }
     render() {
         return (
           <div id="content">
-            {/* <div className="filter">
+          <div className="filter">
                 <input type="radio" id="tag-0" className="filter-tag" name="filter-radio" hidden defaultChecked />
-                {this.state.langs.map((lang,index) => (
+                {this.state.filters.map((val,index) => (
                     <input type="radio" id={"tag-"+(index+1)} className="filter-tag" name="filter-radio" key={index} hidden />
                 ))}
             
                 <div className="filter-nav">
                     
-                    {this.state.langs.map((lang,index) => (
-                        /* <div className="chip" htmlFor={"tag-"+(index+1)} key={index}>{lang}</div> 
-                        <div className="chip" tabindex={(index+1)}  onClick={() => { this.filterByLanguage(lang)} } >{lang}</div>
+                    {this.state.filters.map((topic,index) => (
+                        <div className="chip" tabindex={(index+1)}  onClick={() => { this.filterByTopic(topic)} } >{topic}</div>
                     ))}
                 </div>
+            
 
                 <div className="filter-body">
                     <div className="filter-body">
@@ -122,7 +142,7 @@ class Topic extends Component{
                         <div className="columns">
                         {this.state.repos.map((item,index) => (
                             <div class="col s12 m6">
-                                <div class="card blue-grey darken-1" data-language={this.findLang(index)}>
+                                <div class="card blue-grey darken-1" data-topic={this.findTopic(index-1)}>
                                     <div class="card-content white-text">
                                         <a href={item.html_url}><span class="card-title orange-text text-lighten-2">{item.name}</span></a>
                                         <p>{item.description}</p>
@@ -134,7 +154,7 @@ class Topic extends Component{
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div> 
           </div>
         );
       }
