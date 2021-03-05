@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Content.css';
 import Language from '../Pages/Language';
 import Topic from '../Pages/Topic';
+import Timeline from '../Pages/Timeline';
 import { Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
 
 class Content extends Component{
@@ -21,6 +22,7 @@ class Content extends Component{
                     <Redirect to="/Language" />
                   </Route>
                   <Route exact path="/Topic" component={Topic} />
+                  <Route exact path="/Timeline" component={Timeline} />
               </Switch>
             </div>
         );
