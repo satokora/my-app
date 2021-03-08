@@ -57,7 +57,10 @@
      
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
+        setTimeout(() => { 
+          console.log("Waiting to load components..."); 
+      
+        var elems = document.querySelectorAll('.sidenav');
             var options=null;
             var instances = M.Sidenav.init(elems, options);
             //instances.open();
@@ -66,17 +69,18 @@
 
             var elems3 = document.querySelectorAll('.tooltipped');
             var instances3 = M.Tooltip.init(elems3, options);
-
-            // var elems4 = document.querySelectorAll('.tap-target');
-            // var instances4 = M.TapTarget.init(elems4, options);
-            // instances4.next();
             
             var elems5 = document.querySelectorAll('.fixed-action-btn');
-    var instances5 = M.FloatingActionButton.init(elems5, options);
+            var instances5 = M.FloatingActionButton.init(elems5, options);
 
-    var elems6 = document.querySelectorAll('.scrollspy');
-    var instances6 = M.ScrollSpy.init(elems6, options);
-           // instances2.open();
+            var elems6 = document.querySelectorAll('.scrollspy');
+            console.log(elems6.length);
+            var instances6 = M.ScrollSpy.init(elems6, options);
+      
+      
+      }, 1000);
+
+            
           });
     </script>
   </body>

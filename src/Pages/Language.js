@@ -69,27 +69,18 @@ class Language extends Component{
                 .then((langs) => {
                    var lgs=[];
                     for (var key in langs) {
-                        
-                        
                         if (langs.hasOwnProperty(key)) {  
                             lngArray.push(key);
                             commaLangs+="," + key;
-                           
-                           
                             uniqueItems = Array.from(new Set(lngArray));
                         }
                     }
-                    
                     commaLangArray.push(commaLangs);
                     commaLangs="";
-                    
-                    
                     this.setState({ 
                         langArray:commaLangArray,
                         langs:uniqueItems
                        });
-
-                    
                 })
             .catch((error) => console.log(JSON.stringify(error)));
         }
@@ -97,7 +88,6 @@ class Language extends Component{
       }
         async componentDidMount() {
             this.fetchLangRepos();
-            
         }
     render() {
         return (

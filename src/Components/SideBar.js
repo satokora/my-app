@@ -72,7 +72,7 @@ class SideBar extends Component{
                     
                         <div className="background">
                         </div>
-                        <a class="tooltipped" data-position="right" data-tooltip="Thank you for visiting my page!" href="#user"><img className="circle" src={this.state.avatar} /></a>
+                        <a className="tooltipped" data-position="right" data-tooltip="Thank you for visiting my page!" href="#user"><img className="circle" src={this.state.avatar} /></a>
                         <h6>{this.state.name}<br/><span lass="lang-ja"><ruby>高<rt>こう</rt>良<rt>ら</rt>智<rt>さと</rt>子<rt>こ</rt></ruby></span></h6>
                         
                         <a target="_blank" href="https://linkedin.com/in/satoko-kora-223aa380"><FontAwesomeIcon icon={faLinkedin}  size="lg" /></a>&nbsp;
@@ -87,8 +87,8 @@ class SideBar extends Component{
                     </div>
                 </li>
                
-                <ul class="collection with-header">
-                <li  class="collection-header">
+                <ul className="collection with-header">
+                <li  className="collection-header">
                 <a  className="subheader white-text" href="#!">
                 <b>My Github Repositories</b></a>
                 </li>

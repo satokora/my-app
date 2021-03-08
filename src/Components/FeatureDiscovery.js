@@ -19,15 +19,15 @@ class FeatureDiscovery extends Component{
     {
         return(
         
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large teal darken-3 tooltipped" data-position="left" data-tooltip="This page is developed with...">
-              <i class="large material-icons">build</i>
+        <div className="fixed-action-btn">
+            <a className="btn-floating btn-large teal darken-3 tooltipped" data-position="left" data-tooltip="This page is developed with...">
+              <i className="large material-icons">build</i>
             </a>
             <ul>
-              <li><a class="btn-floating blue tooltipped" data-position="left" data-tooltip="React" href="https://reactjs.org/" target="_blank"><FontAwesomeIcon icon={faReact}  size="lg" /></a></li>
-              <li><a class="btn-floating green tooltipped" data-position="left" data-tooltip="Node.js" href="https://nodejs.org/en/" target="_blank"><FontAwesomeIcon icon={faNodeJs}  size="lg" /></a></li>
-              <li><a class="btn-floating black tooltipped" data-position="left" data-tooltip="Github API" href="https://docs.github.com/en/rest" target="_blank"><FontAwesomeIcon icon={faGithub}  size="lg" /></a></li>
-              <li><a class="btn-floating white tooltipped" data-position="left" data-tooltip="Materialize" href="https://materializecss.com/" target="_blank">
+              <li><a className="btn-floating blue tooltipped" data-position="left" data-tooltip="React" href="https://reactjs.org/" target="_blank"><FontAwesomeIcon icon={faReact}  size="lg" /></a></li>
+              <li><a className="btn-floating green tooltipped" data-position="left" data-tooltip="Node.js" href="https://nodejs.org/en/" target="_blank"><FontAwesomeIcon icon={faNodeJs}  size="lg" /></a></li>
+              <li><a className="btn-floating black tooltipped" data-position="left" data-tooltip="Github API" href="https://docs.github.com/en/rest" target="_blank"><FontAwesomeIcon icon={faGithub}  size="lg" /></a></li>
+              <li><a className="btn-floating white tooltipped" data-position="left" data-tooltip="Materialize" href="https://materializecss.com/" target="_blank">
               <img src="https://materializecss.com/images/favicon/favicon-32x32.png" />
               
               </a></li>

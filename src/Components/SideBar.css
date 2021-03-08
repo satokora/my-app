@@ -1,5 +1,4 @@
 .profile-photo {
-    /* background-color: #29263d; */
     background-color: #f5f0e1;
     opacity: 1;
     text-align: center;
@@ -20,24 +19,18 @@
 
 .sidenav {
     width: 18rem;
-    /* opacity: 0.8; */
     background-color: #1e3d59;
-    /* color: #fff; */
 }
 .sidenav li>a {
     color: #fff;
 }
-/* .off-canvas {
-    width: 18rem;
-} */
+
 .tile{
     line-height:20px;
     color: #fff;
     padding: 5px;
 }
-/* #sidebar-id{
-    width: 18rem;
-} */
+
 
 hr{
     border: 1px solid #d28f79;
